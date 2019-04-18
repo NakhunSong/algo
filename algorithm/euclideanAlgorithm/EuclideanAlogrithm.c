@@ -2,7 +2,6 @@
 
 int main() {
 
-  //Please Enter Your Code Here
   int a, b;
   scanf("%d %d", &a, &b);
   
