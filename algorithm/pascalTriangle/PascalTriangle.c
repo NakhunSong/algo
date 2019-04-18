@@ -15,7 +15,7 @@ int main() {
   for(int i=1; i<=n; i++) {
     for(int j=1; j<=n*2; j++) {
       if(arr[i][j] == 0) {
-        printf(" ");
+        printf("x ");
       } else {
         printf("%d ", arr[i][j]);
       }
