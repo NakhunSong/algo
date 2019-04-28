@@ -2,7 +2,7 @@
 
 int fibonacci(int n) {
     int number[3] = {0, 1, 1};
-    for(int i=2; i<N; i++) {
+    for(int i=2; i<n; i++) {
         number[(i+1)%3] = number[i%3] + number[(i-1)%3];
     }
     return number[n%3];
