@@ -12,12 +12,10 @@ public class Main {
 		}
 		int ans = 0;
 		int check = 0;
-		int max = 0;
 		int idx = 0;
 		for(int i=1; i<n; i++) {
 			if(a[i] > a[i+1]) {
 				check++;
-				max = a[i];
 				idx = i;
 			}
 		}
@@ -25,22 +23,24 @@ public class Main {
 		if(check >= 2) {
 			ans = 0;
 		} else if(check==1){
-			int less = 0;
-			int lessCnt = 0;
+			int fail = 0;
 			for(int i=idx+1; i<=n; i++) {
-				if(a[i] < max) {
-					lessCnt++;
-					less = a[i];
+				if(a[idx-1] > a[i]) {
+					fail+=1;
+					break;
 				}
 			}
-			if(lessCnt == 1) {
-				if(a[idx-1] <= less) {
-					ans = 2;
-				} else {
-					ans = 1;					
+			for(int i=idx+2; i<=n; i++) {
+				if(a[idx] > a[i]) {
+					fail+=1;
+					break;
 				}
-			} else { // lessCnt 가 2개 이상
-				
+			}
+			if(fail == 0) {
+				ans = 2;
+			} else if(fail == 1) {
+				ans = 1;
+			} else {
 				ans = 0;
 			}
 		} else {
