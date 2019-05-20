@@ -20,8 +20,11 @@ public class Main {
       public int compareTo(Pair p) {
          if(input > p.input) {
             return 1;
+         } else if(input == p.input) {
+        	 return 0;
+         } else {
+        	 return -1;        	 
          }
-         return -1;
       }
       
    }
@@ -40,9 +43,7 @@ public class Main {
       
       int max = 0;
       int cnt = 1;
-      for(Pair data : a) {
-         System.out.println(data.input + " " + data.idx);
-      }
+      
       for(Pair data : a) {
          if(data.idx > cnt) {
             if(data.idx - cnt > max) {
