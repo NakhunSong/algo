@@ -16,7 +16,11 @@ class Solution {
 				hm.put(clothes[i][1], value);
 			}
 		}
-		
+		int mul = 1;
+		for(String key : hm.keySet()) {
+			mul *= (hm.get(key)+1);
+		}
+		answer = mul-1;
 		return answer;
     }
 }
