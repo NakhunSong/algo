@@ -9,7 +9,7 @@ class Solution {
   fd[0] = 0;
   for(int i=1; i<N-1; i++) {
     fd[i] = fd[i-1]+ A[i];
-    if(fd[i] < 0) {
+    if(fd[i] < 0) { // 현재 위치까지의 최댓값이 0보다 작은 경우
       fd[i] = 0;
     }
   }
