@@ -9,6 +9,7 @@ class Solution {
           if(!check[A[end]]) {
               check[A[end]] = true;
               cnt = cnt + (end-start+1);
+              if(cnt >= 1000000000) return 1000000000;
               end++;
           } else {
               check[A[start]] = false;
