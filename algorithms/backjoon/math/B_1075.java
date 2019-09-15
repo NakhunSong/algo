@@ -1,8 +1,6 @@
-package backjoon.math;
-
 import java.util.Scanner;
 
-public class B_1075 {
+public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -11,16 +9,16 @@ public class B_1075 {
 		
 		int check = 0;
 		
-		n -= n&100;
+		n -= n%100;
 		while(true) {
-			if((float)(n&f) == 0) {
+			if((float)(n%f) == 0) {
 				break;
 			}
 			n++;
 			check++;
 		}
 		if(check < 10) {
-			String num = "0" + String.valueOf(check);
+			String num = "0" + Integer.toString(check);
 			System.out.println(num);
 		} else {
 			System.out.println(check);
