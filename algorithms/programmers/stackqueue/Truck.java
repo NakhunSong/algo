@@ -1,6 +1,41 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
+class Solution {
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+        int answer = 0;
+        Queue<Integer> q = new LinkedList<>();
+        int n = truck_weights.length;
+        int index = 0;
+        int time = 0;
+        int cnt = 0;
+        while(cnt<bridge_length) {
+            q.add(0);
+            cnt++;
+        }
+        System.out.println(q.size());
+        int now = 0;
+        while(!q.isEmpty()) {
+            int left = q.remove();
+            now -= left;
+            if(index < n && now+truck_weights[index] <= weight) {
+                q.add(truck_weights[index]);
+                now += truck_weights[index];
+                if(index<n) {
+                    index++;
+                }
+            } else {
+                if(index<n) {
+                    q.add(0);   
+                }
+            }
+            
+            time++;
+        }
+        return answer=time;
+    }
+}
+
+// 이전 솔루션
 class Solution {
     public static class truck {
         int weight;
