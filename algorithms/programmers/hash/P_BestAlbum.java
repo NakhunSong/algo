@@ -1,9 +1,70 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+class Solution {
+    static class Music implements Comparable<Music>{
+        int index;
+        int play;
+        int genre;
+        public Music(int index, int play, int genre) {
+            this.index = index;
+            this.play = play;
+            this.genre = genre;
+        }
+        
+        @Override
+        public int compareTo(Music m) {
+            if(this.genre < m.genre) {
+                return 1;
+            } else if(this.genre == m.genre) {
+                if(this.play < m.play) {
+                    return 1;
+                } else if(this.play == m.play) {
+                    if(this.index > m.index) {
+                        return 1;
+                    }
+                }
+            }
+            return -1;
+        }
+    }
+    public int[] solution(String[] genres, int[] plays) {
+        int n = genres.length;
+        Map<String, Integer> genreCnt = new HashMap<>();
+        for(int i=0; i<n; i++) {
+            if(genreCnt.get(genres[i]) == null) {
+                genreCnt.put(genres[i], plays[i]);
+            } else {
+                genreCnt.put(genres[i], genreCnt.get(genres[i])+plays[i]);
+            }
+        }
+        List<Music> list = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            list.add(new Music(i, plays[i], genreCnt.get(genres[i])));
+        }
+        Collections.sort(list);
+        Map<String, Integer> limit = new HashMap<>();
+        List<Integer> ans = new ArrayList<>();
+        for(int i=0; i<list.size(); i++) {
+            int playIdx = list.get(i).index;
+            String genre = genres[playIdx];
+            if(limit.get(genre) == null) {
+                limit.put(genre, 1);
+                ans.add(playIdx);
+            } else if(limit.get(genre) < 2) {
+                limit.put(genre, 2);
+                ans.add(playIdx);
+            }
+        }
+        int index = 0;
+        int[] answer = new int[ans.size()];
+        for(int a : ans) {
+            answer[index++] = a;
+        }
+        return answer;
+    }
+}
+
+// pre
 class Solution {
     public static class Album implements Comparable<Album>{
 		String genre;
