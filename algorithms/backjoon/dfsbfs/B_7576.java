@@ -17,8 +17,8 @@ public class Main {
       Scanner sc = new Scanner(System.in);   
       int[] dx = {1, -1, 0, 0};
       int[] dy = {0, 0, 1, -1};   
-      int m = sc.nextInt(); // 가로
-      int n = sc.nextInt(); // 세로
+      int m = sc.nextInt();
+      int n = sc.nextInt();
       int[][] box = new int[n][m];
       int[][] dist = new int[n][m];
       Queue<Pair> q = new LinkedList<Pair>();

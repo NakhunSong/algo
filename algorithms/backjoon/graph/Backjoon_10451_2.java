@@ -17,7 +17,7 @@ public class Main {
 			int n = sc.nextInt();
 			a = new int[n+1]; 
 			for(int i=1; i<=n; i++) {
-				a[i] = sc.nextInt(); // 순열 사이클은 한 정점이 다음 정점 한개만을 갖는다.
+				a[i] = sc.nextInt();
 			}
 			c = new boolean[n+1];
 			int ans = 0;
