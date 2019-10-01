@@ -3,13 +3,13 @@ class Solution {
   static int[] dy = {1, 0};
   static int[][] a;
   static int ans = 0;
-  
+  static int mod = 1000000007;
   public static void go(int x, int y, boolean[][] check) {
-      if(x == check[0].length && y == check.length) ans += 1;
+      if(x == check.length-1 && y == check[0].length-1) ans += 1;
       for(int k=0; k<2; k++) {
           int nx = x + dx[k];
           int ny = y + dy[k];
-          if(nx>=1 && nx<=check[0].length && ny>=1 && ny<=check.length) {
+          if(nx>=1 && nx<check.length && ny>=1 && ny<check[0].length) {
               if(a[nx][ny] != 1 && !check[nx][ny]) {
                   check[nx][ny] = true;
                   go(nx, ny, check);
@@ -28,6 +28,6 @@ class Solution {
       }
       check[1][1] = true;
       go(1, 1, check);
-      return ans;
+      return ans%mod;
   }
 }
